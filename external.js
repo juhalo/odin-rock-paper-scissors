@@ -7,10 +7,10 @@ function getComputerChoice () {
     I have chosen to assign these the following way:
     rock=0, paper=1 and scissors=2.
 
-    The way I am doing it might give an ever so slighly lesser chance
-    of getting scissors from the program but this made more sense
-    considering my current knowledge of the language (I know that
-    Google exists but I like my own solution more).
+    The way I am doing it does NOT (contrary to my original comment;
+    see my commit messages for more info) give any smaller chance for
+    getting 'Scissors' or any other choice for that matter. They should
+    be exactly equal.
     */
     let choice = Math.floor(Math.random()*3);
     /* I used switch since this kind of case where a value variable
