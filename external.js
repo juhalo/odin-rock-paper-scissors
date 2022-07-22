@@ -26,3 +26,24 @@ function getComputerChoice () {
             return 'Scissors';
     }
 }
+
+function playRound (playerSelection, computerSelection) {
+    /* Converts playerSelection to same format as computerSelection */
+    playerSelection = playerSelection[0].toUpperCase() + playerSelection.substr(1).toLowerCase();
+    /* Uses if/else if/else statements. It would probably be more readable
+    if I had three separate else if statements; I consider changing this */
+    if (playerSelection === computerSelection) {
+        return `Draw!`;
+    } else if ((playerSelection==='Scissors' && computerSelection==='Rock') ||
+    (playerSelection==='Rock' && computerSelection==='Paper') ||
+    (playerSelection==='Paper' && computerSelection==='Scissors')) {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    } else {
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    }
+
+}
+
+const playerSelection = 'rock';
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
