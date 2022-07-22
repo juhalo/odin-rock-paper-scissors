@@ -50,17 +50,22 @@ function game () {
     if outcome>0=player wins */
     let outcome = 0;
     for (let i=0; i<5; i++) {
-        let roundResult = playRound('Rock', getComputerChoice()).split(" ");
+        let roundResult = playRound('Rock', getComputerChoice());
+        console.log(`Round ${i+1}: ` + roundResult);
+        roundResult = roundResult.split(" ");
         if (roundResult[1]===`Win!`) {
             outcome += 1;
-            console.log(`Win! ${outcome}`);
-            continue;
         } else if (roundResult[1]===`Lose!`) {
             outcome -= 1;
-            console.log(`Lost! ${outcome}`);
-        } else {
-            console.log(`Tied! ${outcome}`);
         }
+    }
+    /* Checks the outcome of the game and console.logs the result */
+    if (outcome===0) {
+        console.log(`\n`+`You tied the game.`);
+    } else if (outcome>0) {
+        console.log(`\n`+`Congratulations! You won the game!`);
+    } else {
+        console.log(`\n`+`You lost the game. Better luck next time.`);
     }
 }
 
