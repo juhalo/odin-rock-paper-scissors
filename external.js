@@ -33,7 +33,7 @@ function playRound (playerSelection, computerSelection) {
     /* Uses if/else if/else statements. It would probably be more readable
     if I had three separate else if statements; I consider changing this */
     if (playerSelection === computerSelection) {
-        return `Draw!`;
+        return `You Tied!`;
     } else if ((playerSelection==='Scissors' && computerSelection==='Rock') ||
     (playerSelection==='Rock' && computerSelection==='Paper') ||
     (playerSelection==='Paper' && computerSelection==='Scissors')) {
@@ -44,6 +44,24 @@ function playRound (playerSelection, computerSelection) {
 
 }
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game () {
+    /* Uses outcome variable to know if lost or won
+    if outcome<0=player loses, if outcome===0 = Draw,
+    if outcome>0=player wins */
+    let outcome = 0;
+    for (let i=0; i<5; i++) {
+        let roundResult = playRound('Rock', getComputerChoice()).split(" ");
+        if (roundResult[1]===`Win!`) {
+            outcome += 1;
+            console.log(`Win! ${outcome}`);
+            continue;
+        } else if (roundResult[1]===`Lose!`) {
+            outcome -= 1;
+            console.log(`Lost! ${outcome}`);
+        } else {
+            console.log(`Tied! ${outcome}`);
+        }
+    }
+}
+
+game()
