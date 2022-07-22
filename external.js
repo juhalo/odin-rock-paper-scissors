@@ -49,8 +49,11 @@ function game () {
     if outcome<0=player loses, if outcome===0 = Draw,
     if outcome>0=player wins */
     let outcome = 0;
+    console.log("This is a game of \'Rock Paper Scissors\' versus a computer");
+    console.log("")
     for (let i=0; i<5; i++) {
-        let roundResult = playRound('Rock', getComputerChoice());
+        let playerSelection = prompt(`Type \'Rock\', \'Paper\' or \'Scissors\'`)
+        let roundResult = playRound(playerSelection, getComputerChoice());
         console.log(`Round ${i+1}: ` + roundResult);
         roundResult = roundResult.split(" ");
         if (roundResult[1]===`Win!`) {
