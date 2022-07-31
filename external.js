@@ -1,3 +1,6 @@
+let outcome;
+let result;
+
 function getComputerChoice() {
   // Forces the  values to be either 0 (rock), 1 (paper) or 2 (scissors)
   let choice = Math.floor(Math.random() * 3);
@@ -31,23 +34,39 @@ function playRound(playerSelection, computerSelection) {
 
 function addEvent(clickedButton) {
   let roundResult = playRound(clickedButton, getComputerChoice());
-  console.log(`Round ${round++ + 1}: ` + roundResult);
+  const results = document.querySelector('.results');
+  const rounds = document.querySelector('#rounds');
+  const score = document.querySelector('#score');
+  const winner = document.querySelector('#winner');
+  const newGame = document.querySelector('#new-game');
+  console.log(rounds.firstElementChild);
+  //console.log(`Round ${round++}: ` + roundResult);
+  if (rounds.firstElementChild !== null) {
+    rounds.removeChild(rounds.firstElementChild);
+  }
+  const roundsP = document.createElement('p');
+  roundsP.textContent = `Round ${round++}: ` + roundResult;
+  rounds.appendChild(roundsP);
   roundResult = roundResult.split(' ');
   if (roundResult[1] === `Win!`) {
     outcome += 1;
   } else if (roundResult[1] === `Lose!`) {
     outcome -= 1;
   }
+  console.log(outcome);
 }
 
-let outcome = 0;
-let round = 0;
-const buttons = document.querySelectorAll('button');
-let playerSelection = buttons.forEach((button) =>
-  button.addEventListener('click', () => addEvent(button.id))
-);
+function game() {
+  outcome = 0;
+  round = 1;
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach((button) =>
+    button.addEventListener('click', () => addEvent(button.id))
+  );
+}
 
 //Starts the game
+game();
 /* function game() {
   // Uses outcome variable to know if lost or won
   let outcome = 0;
