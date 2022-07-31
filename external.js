@@ -39,23 +39,39 @@ function addEvent(clickedButton) {
   const rounds = document.querySelector('#rounds');
   const score = document.querySelector('#score');
   const winner = document.querySelector('#winner');
-  const newGame = document.querySelector('#new-game');
-  console.log(rounds.firstElementChild);
-  //console.log(`Round ${round++}: ` + roundResult);
+  if (winner.textContent !== null) {
+    winner.textContent = null;
+  }
   if (rounds.firstElementChild !== null) {
     rounds.removeChild(rounds.firstElementChild);
   }
   const roundsP = document.createElement('p');
-  roundsP.textContent = `Round ${round++}: ` + roundResult;
+  roundsP.textContent = `Round ${round}: ` + roundResult;
   rounds.appendChild(roundsP);
   roundResult = roundResult.split(' ');
   if (roundResult[1] === `Win!`) {
     userWins += 1;
+    if (userWins === 5) {
+      winner.textContent = 'You are the winner!';
+      userWins = 0;
+      computerWins = 0;
+      round = 0;
+    }
   } else if (roundResult[1] === `Lose!`) {
     computerWins += 1;
+    if (computerWins === 5) {
+      winner.textContent = 'You lost the game!';
+      userWins = 0;
+      computerWins = 0;
+      round = 0;
+    }
   }
   score.style.whiteSpace = 'pre'; //Allows '\ n' to create a newline
   score.textContent = `Your score: ${userWins}\nComputer score: ${computerWins}`;
+  if (userWins === 0 && computerWins === 0 && round === 0) {
+    score.textContent = '';
+  }
+  round++;
 }
 
 function game() {
@@ -70,34 +86,3 @@ function game() {
 
 //Starts the game
 game();
-/* function game() {
-  // Uses outcome variable to know if lost or won
-  let outcome = 0;
-  console.log("This is a game of 'Rock Paper Scissors' versus a computer");
-  console.log('');
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt(`Type \'Rock\', \'Paper\' or \'Scissors\'`);
-    let roundResult = playRound(playerSelection, getComputerChoice());
-    console.log(`Round ${i + 1}: ` + roundResult);
-    roundResult = roundResult.split(' ');
-    if (roundResult[1] === `Win!`) {
-      outcome += 1;
-    } else if (roundResult[1] === `Lose!`) {
-      outcome -= 1;
-    }
-  }
-  // Checks the outcome of the game
-  if (outcome === 0) {
-    console.log(`\n` + `You tied the game.`);
-  } else if (outcome > 0) {
-    console.log(`\n` + `Congratulations! You won the game!`);
-  } else {
-    console.log(`\n` + `You lost the game. Better luck next time.`);
-  }
-  let newGame = prompt('Restart game: (Y)es, (N)o');
-  if (newGame === 'Y') {
-    game();
-  }
-}
-
-game(); */
