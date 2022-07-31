@@ -1,5 +1,6 @@
-let outcome;
-let result;
+let userWins;
+let computerWins;
+let round;
 
 function getComputerChoice() {
   // Forces the  values to be either 0 (rock), 1 (paper) or 2 (scissors)
@@ -49,15 +50,17 @@ function addEvent(clickedButton) {
   rounds.appendChild(roundsP);
   roundResult = roundResult.split(' ');
   if (roundResult[1] === `Win!`) {
-    outcome += 1;
+    userWins += 1;
   } else if (roundResult[1] === `Lose!`) {
-    outcome -= 1;
+    computerWins += 1;
   }
-  console.log(outcome);
+  score.style.whiteSpace = 'pre'; //Allows '\ n' to create a newline
+  score.textContent = `Your score: ${userWins}\nComputer score: ${computerWins}`;
 }
 
 function game() {
-  outcome = 0;
+  userWins = 0;
+  computerWins = 0;
   round = 1;
   const buttons = document.querySelectorAll('button');
   buttons.forEach((button) =>
