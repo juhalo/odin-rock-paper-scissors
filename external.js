@@ -31,19 +31,13 @@ function playRound(playerSelection, computerSelection) {
 
 function addEvent(clickedButton) {
   let roundResult = playRound(clickedButton, getComputerChoice());
-  const results = document.querySelector('.results');
   const rounds = document.querySelector('#rounds');
   const score = document.querySelector('#score');
   const winner = document.querySelector('#winner');
   if (winner.textContent !== null) {
     winner.textContent = null; //removes win/lose text on next game
   }
-  if (rounds.firstElementChild !== null) {
-    rounds.removeChild(rounds.firstElementChild);
-  }
-  const roundsP = document.createElement('p');
-  roundsP.textContent = `Round ${round}: ` + roundResult;
-  rounds.appendChild(roundsP);
+  rounds.textContent = `Round ${round}: ` + roundResult;
   roundResult = roundResult.split(' ');
   if (roundResult[1] === `Win!`) {
     userWins += 1;
