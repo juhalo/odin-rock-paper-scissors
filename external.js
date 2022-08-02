@@ -32,8 +32,11 @@ function playRound(playerSelection, computerSelection) {
 function addEvent(clickedButton) {
   let roundResult = playRound(clickedButton, getComputerChoice());
   const rounds = document.querySelector('#rounds');
+  //const rounds = document.createElement('div');
   const score = document.querySelector('#score');
+  //const score = document.createElement('div');
   const winner = document.querySelector('#winner');
+  //const winner = document.createElement('div');
   if (winner.textContent !== null) {
     winner.textContent = null; //removes win/lose text on next game
   }
@@ -77,5 +80,26 @@ function game() {
 let userWins;
 let computerWins;
 let round;
+
+const body = document.querySelector('body');
+const buttons = document.createElement('div');
+buttons.classList.add('buttons');
+body.appendChild(buttons);
+
+const rock = document.createElement('button');
+rock.setAttribute('id', 'rock');
+rock.textContent = 'Rock';
+buttons.appendChild(rock);
+
+const paper = document.createElement('button');
+paper.setAttribute('id', 'paper');
+paper.textContent = 'Paper';
+buttons.appendChild(paper);
+
+const scissors = document.createElement('button');
+scissors.setAttribute('id', 'scissors');
+scissors.textContent = 'Scissors';
+buttons.appendChild(scissors);
+console.log(document.querySelectorAll('button'));
 //Starts the game
 game();
