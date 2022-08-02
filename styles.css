@@ -2,7 +2,6 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
 
 .buttons {
@@ -12,10 +11,24 @@ body {
 button {
   padding: 10px;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 30px;
+  background-color: aliceblue;
+}
+
+button:hover {
+  background-color: lightskyblue;
 }
 
 .results {
-  width: 300px;
   text-align: center;
+  font-size: 20px;
+}
+
+#winner {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#rounds {
+  margin: 15px;
 }
