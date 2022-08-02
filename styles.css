@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.buttons {
+  margin-top: 40vh;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.results {
+  width: 300px;
+  text-align: center;
+}

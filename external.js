@@ -1,7 +1,3 @@
-let userWins;
-let computerWins;
-let round;
-
 function getComputerChoice() {
   // Forces the  values to be either 0 (rock), 1 (paper) or 2 (scissors)
   let choice = Math.floor(Math.random() * 3);
@@ -40,7 +36,7 @@ function addEvent(clickedButton) {
   const score = document.querySelector('#score');
   const winner = document.querySelector('#winner');
   if (winner.textContent !== null) {
-    winner.textContent = null;
+    winner.textContent = null; //removes win/lose text on next game
   }
   if (rounds.firstElementChild !== null) {
     rounds.removeChild(rounds.firstElementChild);
@@ -84,5 +80,8 @@ function game() {
   );
 }
 
+let userWins;
+let computerWins;
+let round;
 //Starts the game
 game();
