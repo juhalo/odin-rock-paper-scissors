@@ -13,9 +13,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  // Converts playerSelection to same format as computerSelection
-  playerSelection =
-    playerSelection[0].toUpperCase() + playerSelection.substr(1).toLowerCase();
   if (playerSelection === computerSelection) {
     return `You Tied!`;
   } else if (
@@ -30,7 +27,10 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function addEvent(clickedButton) {
-  let roundResult = playRound(clickedButton, getComputerChoice());
+  let roundResult = playRound(
+    clickedButton.target.textContent,
+    getComputerChoice()
+  );
   if (winner.textContent !== null) {
     winner.textContent = null; //removes win/lose text on next game
   }
@@ -66,16 +66,13 @@ function game() {
   computerWins = 0;
   round = 1;
   const buttons = document.querySelectorAll('button');
-  buttons.forEach((button) =>
-    button.addEventListener('click', () => addEvent(button.id))
-  );
+  buttons.forEach((button) => button.addEventListener('click', addEvent));
 }
 
 let userWins;
 let computerWins;
 let round;
 
-const body = document.querySelector('body');
 const buttons = document.createElement('div');
 buttons.classList.add('buttons');
 
@@ -94,7 +91,7 @@ scissors.setAttribute('id', 'scissors');
 scissors.textContent = 'Scissors';
 buttons.appendChild(scissors);
 
-body.appendChild(buttons);
+document.body.appendChild(buttons);
 
 const results = document.createElement('div');
 results.classList.add('results');
@@ -110,6 +107,6 @@ results.appendChild(score);
 const winner = document.createElement('div');
 winner.setAttribute('id', 'winner');
 results.appendChild(winner);
-body.appendChild(results);
+document.body.appendChild(results);
 //Starts the game
 game();
