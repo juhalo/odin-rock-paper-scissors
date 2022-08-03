@@ -76,37 +76,28 @@ let round;
 const buttons = document.createElement('div');
 buttons.classList.add('buttons');
 
-const rock = document.createElement('button');
-rock.setAttribute('id', 'rock');
-rock.textContent = 'Rock';
-buttons.appendChild(rock);
+const choiceList = ['rock', 'paper', 'scissors'];
 
-const paper = document.createElement('button');
-paper.setAttribute('id', 'paper');
-paper.textContent = 'Paper';
-buttons.appendChild(paper);
-
-const scissors = document.createElement('button');
-scissors.setAttribute('id', 'scissors');
-scissors.textContent = 'Scissors';
-buttons.appendChild(scissors);
+for (const choice of choiceList) {
+  const button = document.createElement('button');
+  button.setAttribute('id', choice);
+  button.textContent = choice[0].toUpperCase() + choice.substring(1);
+  buttons.appendChild(button);
+}
 
 document.body.appendChild(buttons);
 
 const results = document.createElement('div');
 results.classList.add('results');
 
-const rounds = document.createElement('div');
-rounds.setAttribute('id', 'rounds');
-results.appendChild(rounds);
+const resultList = ['rounds', 'score', 'winner'];
 
-const score = document.createElement('div');
-score.setAttribute('id', 'score');
-results.appendChild(score);
+for (const result of resultList) {
+  const div = document.createElement('div');
+  div.setAttribute('id', result);
+  results.appendChild(div);
+}
 
-const winner = document.createElement('div');
-winner.setAttribute('id', 'winner');
-results.appendChild(winner);
 document.body.appendChild(results);
 //Starts the game
 game();
