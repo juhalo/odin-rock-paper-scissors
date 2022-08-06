@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function addEvent(clickedButton) {
+function clickBtn(clickedButton) {
   let roundResult = playRound(
     clickedButton.target.textContent,
     getComputerChoice()
@@ -61,18 +61,20 @@ function addEvent(clickedButton) {
   round++;
 }
 
+// Separate function to  potentially call more than once; also more readable
 function game() {
   userWins = 0;
   computerWins = 0;
   round = 1;
   const buttons = document.querySelectorAll('button');
-  buttons.forEach((button) => button.addEventListener('click', addEvent));
+  buttons.forEach((button) => button.addEventListener('click', clickBtn));
 }
 
 let userWins;
 let computerWins;
 let round;
 
+// Create most of DOM in javascript for practice
 const buttons = document.createElement('div');
 buttons.classList.add('buttons');
 
